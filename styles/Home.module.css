@@ -5,6 +5,16 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  overflow-y: scroll;
+}
+
+.form_fields {
+  margin: 70px 0;
+  width: 100%;
+}
+
+.form_fields label {
+  padding: 0;
 }
 
 .main {
@@ -14,19 +24,6 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-}
-
-.cabecalho {
-  position: fixed;
-  top: 0;
-  width: 100%;
-  height: 50px;
-  background-color: #dedede;
-  border: 1px solid #aeaeae;
-  display: flex;
-  align-items:center;
-  justify-content: center;
-  font-weight: bold;
 }
 
 .menu_footer {
@@ -49,4 +46,9 @@
   display: flex;
   flex-direction: column;
   margin-bottom: 10px;
+  width: 100%;
+}
+
+.save {
+  width: 100%;
 }

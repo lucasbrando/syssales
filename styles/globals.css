@@ -1,4 +1,6 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
 @import '~bootstrap/dist/css/bootstrap.min.css';
+
 
 html,
 body {
@@ -15,4 +17,9 @@ a {
 
 * {
   box-sizing: border-box;
+  font-family: Roboto, sans-serif;
+}
+
+label {
+  padding-left: 0;
 }

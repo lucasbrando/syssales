@@ -1,69 +1,88 @@
 import styles from '../styles/Home.module.css'
 import Link from 'next/link'
-import { Button } from 'react-bootstrap'
+import { Button, FormControl, InputGroup, Form } from 'react-bootstrap'
+import Cabecalho  from '../components/cabecalho'
 
 export default function Home() {
   return (
-      <div className={styles.container}>
-        <div className={styles.cabecalho}>
-          Sistemas de Gerenciamento de Vendas
-        </div>
 
+      <div className={styles.container}>
+      <Cabecalho />
+      <div className={styles.form_fields}>
         <div className={styles.input_block}>
-          <label htmlFor='name_client'>Nome Cliente</label>
-          <select name="name_client" id="name_client">
+          <Form.Group controlId="Clients.ControlSelect">
+            <Form.Label>Nome Cliente:</Form.Label>
+            <Form.Control as="select">
               <option value="">Selecione...</option>
               <option value="123">Katia - Raio de Sol</option>
               <option value="234">Gloria - Familia</option>
               <option value="345">Josi - Igreja</option>
               <option value="456">Cleide - Externo</option>
-          </select>
+            </Form.Control>
+          </Form.Group>
+        </div> 
+
+        <div className={styles.input_block}>
+          <Form.Group controlId="Products.ControlSelect">
+              <Form.Label>Selecione o Produto:</Form.Label>
+              <Form.Control as="select">
+                <option value="">Selecione...</option>
+                <option value="0000">Acerto - 0000</option>
+                <option value="6307">Calcinha - 6307</option>
+                <option value="5966">Conjunto - 5966</option>
+                <option value="5135">Calcinha - 5135</option>
+                <option value="6086">Pijama - 6086</option>
+              </Form.Control>
+            </Form.Group>
         </div>
 
         <div className={styles.input_block}>
-          <label htmlFor="name_product">Selecione o Produto:</label>
-          <select name="name_product" id="name_product">
-              <option value="">Selecione...</option>
-              <option value="0000">Acerto - 0000</option>
-              <option value="6307">Calcinha - 6307</option>
-              <option value="5966">Conjunto - 5966</option>
-              <option value="5135">Calcinha - 5135</option>
-              <option value="6086">Pijama - 6086</option>
-          </select>
+          <Form.Group>
+            <InputGroup>
+              <Form.Label column sm="12">Valor do Produto:</Form.Label>
+              <InputGroup.Prepend>
+                <InputGroup.Text>R$</InputGroup.Text>
+              </InputGroup.Prepend>
+              <Form.Control type="text" />
+            </InputGroup>
+          </Form.Group>
         </div>
 
         <div className={styles.input_block}>
-          <label htmlFor='value_product'>Valor Produto - R$:</label>
-          <input id='value_product' />
+          <Form.Group>
+            <InputGroup>
+              <Form.Label column sm="12">Desconto:</Form.Label>
+              <InputGroup.Prepend>
+                <InputGroup.Text>R$</InputGroup.Text>
+              </InputGroup.Prepend>
+              <Form.Control type="text"/>
+            </InputGroup>
+          </Form.Group>
         </div>
 
         <div className={styles.input_block}>
-          <label htmlFor='discount'>Desconto - R$:</label>
-          <input id='discount' />
+          <Form.Group>
+            <InputGroup>
+              <Form.Label column sm="12">Total:</Form.Label>
+              <InputGroup.Prepend>
+                <InputGroup.Text>R$</InputGroup.Text>
+              </InputGroup.Prepend>
+              <Form.Control type="text"/>
+            </InputGroup>
+          </Form.Group>
         </div>
 
-        <div className={styles.input_block}>
-          <label htmlFor="type">Tipo:</label>
-          <select name="type" id="type">
-              <option value="0">Compra</option>
-              <option value="1">Acerto</option>
-          </select>
-        </div>
-
-        <div className={styles.input_block}>
-          <label htmlFor='total'>Total - R$:</label>
-          <input id='total' />
-        </div>
-
+        <Button variant="primary" className={styles.save}>Salvar</Button>
+      </div>
         <div className={styles.menu_footer}>
           <Link href="">
-            <Button variant="primary">Clientes</Button>
+            <Button variant="dark">Clientes</Button>
           </Link>
           <Link href="">
-          <Button variant="primary">Vendas/Acerto</Button>
+          <Button variant="dark">Vendas/Acerto</Button>
           </Link>
           <Link href="">
-          <Button variant="primary">Relatórios</Button>
+          <Button variant="dark">Relatórios</Button>
           </Link>
         </div>
       </div>    
