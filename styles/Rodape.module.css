@@ -1,0 +1,15 @@
+.menu_footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    background-color: #fefefe;
+}
+  
+.menu_footer > button {
+    width: 100%;
+    margin: 0 5px;
+}

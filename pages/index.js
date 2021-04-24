@@ -1,7 +1,7 @@
 import styles from '../styles/Home.module.css'
-import Link from 'next/link'
-import { Button, FormControl, InputGroup, Form } from 'react-bootstrap'
+import { Button, InputGroup, Form } from 'react-bootstrap'
 import Cabecalho  from '../components/cabecalho'
+import Rodape from '../components/rodape'
 
 export default function Home() {
   return (
@@ -74,17 +74,7 @@ export default function Home() {
 
         <Button variant="primary" className={styles.save}>Salvar</Button>
       </div>
-        <div className={styles.menu_footer}>
-          <Link href="/clients">
-            <Button variant="dark">Clientes</Button>
-          </Link>
-          <Link href="/">
-            <Button variant="dark">Vendas/Acerto</Button>
-          </Link>
-          <Link href="/reports">
-            <Button variant="dark">Relatórios</Button>
-          </Link>
-        </div>
-      </div>    
+      <Rodape />
+    </div>    
   )
 }
