@@ -1,3 +1,4 @@
+import styles from '../styles/Clients.module.css'
 import Cabecalho  from '../components/cabecalho'
 
 export default function Clients() {
