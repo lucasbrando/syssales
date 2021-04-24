@@ -75,14 +75,14 @@ export default function Home() {
         <Button variant="primary" className={styles.save}>Salvar</Button>
       </div>
         <div className={styles.menu_footer}>
-          <Link href="">
+          <Link href="/clients">
             <Button variant="dark">Clientes</Button>
           </Link>
-          <Link href="">
-          <Button variant="dark">Vendas/Acerto</Button>
+          <Link href="/">
+            <Button variant="dark">Vendas/Acerto</Button>
           </Link>
-          <Link href="">
-          <Button variant="dark">Relatórios</Button>
+          <Link href="/reports">
+            <Button variant="dark">Relatórios</Button>
           </Link>
         </div>
       </div>    
