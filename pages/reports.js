@@ -1,3 +1,8 @@
 export default function Reports() {
-    return <h1>Relatórios</h1>
+    return (
+        <div className={styles.container}>
+            <Cabecalho />
+            <h2>Relatórios</h2>
+        </div>    
+    )
 }
