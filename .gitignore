@@ -32,3 +32,6 @@ yarn-error.log*
 
 # vercel
 .vercel
+
+# Arquivo de BD
+bdsyssales.json

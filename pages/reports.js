@@ -7,6 +7,7 @@ export default function Reports() {
         <div className={styles.container}>
             <Cabecalho />
             <h2>Relatórios</h2>
+            <h3>Em breve</h3>
             <Rodape />
         </div>    
     )
