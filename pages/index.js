@@ -56,10 +56,6 @@ export default function Home() {
                 <Form.Control as="select" value={nameProduct} onChange={(e) => {setNameProduct(e.target.value)}}>
                   <option value="" defaultValue disabled hidden>Selecione...</option>
                   <option value="0000">Acerto - 0000</option>
-                  <option value="6307">Calcinha - 6307</option>
-                  <option value="5966">Conjunto - 5966</option>
-                  <option value="5135">Calcinha - 5135</option>
-                  <option value="6086">Pijama - 6086</option>
                   {products.map( product => {
                   return <option key={product.id} value={product.name +" - "+product.id}>{product.name} - {product.id}</option>
                 })}
