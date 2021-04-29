@@ -63,10 +63,10 @@ export default function Home() {
                 <div className={styles.input_block}>
                   <Form.Group controlId="Clients.ControlSelect">
                     <Form.Label>Nome Cliente:</Form.Label>
-                    <Form.Control as="select" value={nameClient} onChange={(e) => { setNameClient(e.target.value)}}>
+                    <Form.Control as="select" value={nameClient} onChange={(e) => { setIdCostumer(e.target.value.idCostumer)}}>
                       <option key="0" value="" defaultValue disabled hidden>Selecione...</option>
                       { clients.map( client => {
-                        return <option key={client.id_customer} value={setIdCostumer(client.id_customer)}>{client.name_customer}</option>
+                        return <option key={client.id_customer} value={client.id_customer}>{client.name_customer}</option>
                       })}
                     </Form.Control>
                   </Form.Group>
@@ -75,7 +75,7 @@ export default function Home() {
                 <div className={styles.input_block}>
                   <Form.Group controlId="Products.ControlSelect">
                       <Form.Label>Selecione o Produto:</Form.Label>
-                      <Form.Control as="select" value={nameProduct} onChange={(e) => {setNameProduct(e.target.value)}}>
+                      <Form.Control as="select" value={nameProduct} onChange={(e) => {setIdProduct(e.target.value.id_product)}}>
                         <option value="" defaultValue disabled hidden>Selecione...</option>
                         {products.map( product => {
                         return <option key={product.id_product} value={product.type_product +" - "+setIdProduct(product.id_product)}>{product.type_product} - {product.id_product}</option>
