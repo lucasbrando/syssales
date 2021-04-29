@@ -49,7 +49,7 @@ export default function Home() {
                     <Form.Control as="select" value={nameClient} onChange={(e) => { setNameClient(e.target.value)}}>
                       <option key="0" value="" defaultValue disabled hidden>Selecione...</option>
                       { clients.map( client => {
-                        return <option key={client.id} value={client.name}>{client.name}</option>
+                        return <option key={client.id_customer} value={client.name_customer}>{client.name_customer}</option>
                       })}
                     </Form.Control>
                   </Form.Group>
