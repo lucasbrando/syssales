@@ -38,14 +38,20 @@ export default function Home() {
   async function handleCreateOrder(e) {
     e.preventDefault()
     //console.log({nameClient, nameProduct, priceProduct, dateSale})
-    await api.post('sales', {
-      idClient,
+    //await api.post('sales', {
+    //  idClient,
+    //  idProduct,
+    //  sale,
+    //  dateSale,
+    //  priceProduct,
+    //  createdAt
+    //})
+    console.log({idCostumer,
       idProduct,
       sale,
       dateSale,
       priceProduct,
-      createdAt
-    })
+      createdAt})
   }
   
   return (
@@ -60,7 +66,7 @@ export default function Home() {
                     <Form.Control as="select" value={nameClient} onChange={(e) => { setNameClient(e.target.value)}}>
                       <option key="0" value="" defaultValue disabled hidden>Selecione...</option>
                       { clients.map( client => {
-                        return <option key={setIdClient(client.id_customer)} value={client.name_customer}>{client.name_customer}</option>
+                        return <option key={client.id_customer} value={setIdClient(client.id_customer)}>{client.name_customer}</option>
                       })}
                     </Form.Control>
                   </Form.Group>
@@ -72,7 +78,7 @@ export default function Home() {
                       <Form.Control as="select" value={nameProduct} onChange={(e) => {setNameProduct(e.target.value)}}>
                         <option value="" defaultValue disabled hidden>Selecione...</option>
                         {products.map( product => {
-                        return <option key={setIdProduct(product.id_product)} value={product.type_product +" - "+product.id_product}>{product.type_product} - {product.id_product}</option>
+                        return <option key={product.id_product} value={product.type_product +" - "+setIdProduct(product.id_product)}>{product.type_product} - {product.id_product}</option>
                       })}
                       </Form.Control>
                     </Form.Group>
