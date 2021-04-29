@@ -59,9 +59,8 @@ export default function Home() {
                       <Form.Label>Selecione o Produto:</Form.Label>
                       <Form.Control as="select" value={nameProduct} onChange={(e) => {setNameProduct(e.target.value)}}>
                         <option value="" defaultValue disabled hidden>Selecione...</option>
-                        <option value="0000">Acerto - 0000</option>
                         {products.map( product => {
-                        return <option key={product.id} value={product.name +" - "+product.id}>{product.name} - {product.id}</option>
+                        return <option key={product.id_product} value={product.type_product +" - "+product.id_product}>{product.name} - {product.id}</option>
                       })}
                       </Form.Control>
                     </Form.Group>
