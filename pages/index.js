@@ -19,7 +19,6 @@ export default function Home() {
   useEffect(() => {
     async function handleClients() {
       const response = await api.get('customers')
-      console.log(response)
       setClients(response.data)  
     }
     
