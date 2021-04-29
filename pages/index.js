@@ -19,6 +19,7 @@ export default function Home() {
   useEffect(() => {
     async function handleClients() {
       const response = await api.get('customers')
+      console.log(response)
       setClients(response.data)  
     }
     
@@ -47,7 +48,7 @@ export default function Home() {
                     <Form.Label>Nome Cliente:</Form.Label>
                     <Form.Control as="select" value={nameClient} onChange={(e) => { setNameClient(e.target.value)}}>
                       <option key="0" value="" defaultValue disabled hidden>Selecione...</option>
-                      {clients.map( client => {
+                      { clients.map( client => {
                         return <option key={client.id} value={client.name}>{client.name}</option>
                       })}
                     </Form.Control>
