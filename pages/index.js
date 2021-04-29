@@ -9,12 +9,16 @@ import { useEffect, useState } from 'react'
 
 export default function Home() {
 //const [ session, loading ] = useSession()
+  const [ idCostumer, setIdCostumer ] = useState('')
   const [ nameClient, setNameClient ] = useState('')
+  const [ idProduct, setIdProduct ] = useState('')
   const [ nameProduct, setNameProduct ] = useState('')
   const [ priceProduct, setPriceProduct ] = useState('')
   const [ clients, setClients ] = useState([])
   const [ products, setProducts] = useState([])
+  const [ sale, setSale ] = useState(true)
   const [ dateSale, setDateSale] = useState(format(new Date(), 'dd/MM/yyyy'))
+  const [ createdAt, setCreatedAt ] = useState(format(new Date(), 'dd/MM/yyyy - HH:mm'))
 
   useEffect(() => {
     async function handleClients() {
@@ -31,9 +35,17 @@ export default function Home() {
     handleProducts();
   },[])
 
-  function handleCreateOrder(e) {
+  async function handleCreateOrder(e) {
     e.preventDefault()
-    console.log({nameClient, nameProduct, priceProduct, dateSale})
+    //console.log({nameClient, nameProduct, priceProduct, dateSale})
+    await api.post('sale', {
+      idClient,
+      idProduct,
+      sale,
+      dateSale,
+      priceProduct,
+      createdAt
+    })
   }
   
   return (
@@ -48,7 +60,7 @@ export default function Home() {
                     <Form.Control as="select" value={nameClient} onChange={(e) => { setNameClient(e.target.value)}}>
                       <option key="0" value="" defaultValue disabled hidden>Selecione...</option>
                       { clients.map( client => {
-                        return <option key={client.id_customer} value={client.name_customer}>{client.name_customer}</option>
+                        return <option key={setIdClient(client.id_customer)} value={client.name_customer}>{client.name_customer}</option>
                       })}
                     </Form.Control>
                   </Form.Group>
@@ -60,7 +72,7 @@ export default function Home() {
                       <Form.Control as="select" value={nameProduct} onChange={(e) => {setNameProduct(e.target.value)}}>
                         <option value="" defaultValue disabled hidden>Selecione...</option>
                         {products.map( product => {
-                        return <option key={product.id_product} value={product.type_product +" - "+product.id_product}>{product.type_product} - {product.id_product}</option>
+                        return <option key={setIdProduct(product.id_product)} value={product.type_product +" - "+product.id_product}>{product.type_product} - {product.id_product}</option>
                       })}
                       </Form.Control>
                     </Form.Group>
