@@ -38,7 +38,7 @@ export default function Home() {
   async function handleCreateOrder(e) {
     e.preventDefault()
     //console.log({nameClient, nameProduct, priceProduct, dateSale})
-    await api.post('sale', {
+    await api.post('sales', {
       idClient,
       idProduct,
       sale,
