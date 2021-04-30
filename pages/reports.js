@@ -20,7 +20,8 @@ export default function Reports() {
         try {
             const response = await api.get('sales')
             console.log(response)
-            setLastSales(response.data)  
+            setLastSales(response.data)
+            console.log(lastSales)  
         } catch {
     
         }
@@ -39,21 +40,22 @@ export default function Reports() {
             <Table striped bordered hover>
                 <thead>
                     <tr>
-                        <th>Nome Cliente</th>
-                        <th>Produto</th>
-                        <th>Valor</th>
-                        <th>Cradastrado em</th>
+                        <th>Cliente:</th>
+                        <th>Produto:</th>
+                        <th>Valor:</th>
+                        <th>Venda:</th>
                     </tr>
                 </thead>
                 <tbody>
                     {lastSales.map( lastsale => {
+                        return (
                         <tr key={lastsale.id_sale}>
-                            <td>lastsale.name_customer</td>
-                            <td>lastsale.name_product</td>
-                            <td>lastsale.price_product</td>
-                            <td>lastsale.name_customer</td>
+                            <td>{lastsale.name_customer}</td>
+                            <td>{lastsale.name_product}</td>
+                            <td>R$ {lastsale.price_product}</td>
+                            <td>{lastsale.created_at}</td>
                         </tr>
-                        })
+                    )})
                     }
                 </tbody>
             </Table>
