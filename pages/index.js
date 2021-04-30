@@ -18,7 +18,7 @@ export default function Home() {
   const [ products, setProducts] = useState([])
   const [ sale, setSale ] = useState(true)
   const [ dateSale, setDateSale] = useState(format(new Date(), 'dd/MM/yyyy'))
-  const createdAt = format(new Date(), 'dd/MM/yyyy - HH:mm')
+  const createdAt = format(new Date(), 'dd/MM/yyyy - HH:mm:ss')
 
   useEffect(() => {
     async function handleClients() {
