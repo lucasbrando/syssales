@@ -37,16 +37,20 @@ export default function Home() {
 
   async function handleCreateOrder(e) {
     e.preventDefault()
-    await api.post('sales', {
-        id_client: idCostumer,
-        id_product: idProduct,
-        sale: sale,
-        date_sale: dateSale,
-        price_product: priceProduct,
-        created_at: createdAt
-      })
-      alert("Cadastro efetuado com sucesso")
-      router.reload()
+    try {
+      await api.post('sales', {
+          id_client: idCostumer,
+          id_product: idProduct,
+          sale: sale,
+          date_sale: dateSale,
+          price_product: priceProduct,
+          created_at: createdAt
+        })
+        alert("Cadastro efetuado com sucesso")
+        router.reload()
+    } catch {
+      alert("Erro, tente novamente mais tarde")
+    }  
   }
   
   return (
