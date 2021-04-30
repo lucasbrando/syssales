@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import { api } from '../services/api'
-import { Button, InputGroup, Form } from 'react-bootstrap'
+import { Button, InputGroup, Form, Table } from 'react-bootstrap'
 import { format } from 'date-fns'
 import styles from '../styles/Reports.module.css'
 import Cabecalho  from '../components/cabecalho'
