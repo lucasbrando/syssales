@@ -14,7 +14,7 @@ export default function Reports() {
 
     async function handlelastSales() {
         try {
-            const response = await api.get('customers')
+            const response = await api.get('sales')
             setLastSales(response.data)  
         } catch {
 
