@@ -1,4 +1,5 @@
 import { signIn, signOut, useSession } from 'next-auth/client'
+import { useRouter } from 'next/router';
 import styles from '../styles/Home.module.css'
 import { Button, InputGroup, Form } from 'react-bootstrap'
 import Cabecalho  from '../components/cabecalho'
@@ -9,16 +10,15 @@ import { useEffect, useState } from 'react'
 
 export default function Home() {
 //const [ session, loading ] = useSession()
+  const router = useRouter()
   const [ idCostumer, setIdCostumer ] = useState('')
-  const [ nameClient, setNameClient ] = useState('')
   const [ idProduct, setIdProduct ] = useState('')
-  const [ nameProduct, setNameProduct ] = useState('')
   const [ priceProduct, setPriceProduct ] = useState('')
   const [ clients, setClients ] = useState([])
   const [ products, setProducts] = useState([])
   const [ sale, setSale ] = useState(true)
   const [ dateSale, setDateSale] = useState(format(new Date(), 'dd/MM/yyyy'))
-  const [ createdAt, setCreatedAt ] = useState(format(new Date(), 'dd/MM/yyyy - HH:mm'))
+  const createdAt = format(new Date(), 'dd/MM/yyyy - HH:mm')
 
   useEffect(() => {
     async function handleClients() {
@@ -37,21 +37,16 @@ export default function Home() {
 
   async function handleCreateOrder(e) {
     e.preventDefault()
-    //console.log({nameClient, nameProduct, priceProduct, dateSale})
-    //await api.post('sales', {
-    //  idClient,
-    //  idProduct,
-    //  sale,
-    //  dateSale,
-    //  priceProduct,
-    //  createdAt
-    //})
-    console.log({idCostumer,
-      idProduct,
-      sale,
-      dateSale,
-      priceProduct,
-      createdAt})
+    await api.post('sales', {
+        id_client: idCostumer,
+        id_product: idProduct,
+        sale: sale,
+        date_sale: dateSale,
+        price_product: priceProduct,
+        created_at: createdAt
+      })
+      alert("Cadastro efetuado com sucesso")
+      router.reload()
   }
   
   return (
@@ -63,7 +58,7 @@ export default function Home() {
                 <div className={styles.input_block}>
                   <Form.Group controlId="Clients.ControlSelect">
                     <Form.Label>Nome Cliente:</Form.Label>
-                    <Form.Control as="select" value={nameClient} onChange={(e) => { setIdCostumer(e.target.value.idCostumer)}}>
+                    <Form.Control as="select" value={idCostumer} onChange={(e) => { setIdCostumer(e.target.value) }}>
                       <option key="0" value="" defaultValue disabled hidden>Selecione...</option>
                       { clients.map( client => {
                         return <option key={client.id_customer} value={client.id_customer}>{client.name_customer}</option>
@@ -75,10 +70,10 @@ export default function Home() {
                 <div className={styles.input_block}>
                   <Form.Group controlId="Products.ControlSelect">
                       <Form.Label>Selecione o Produto:</Form.Label>
-                      <Form.Control as="select" value={nameProduct} onChange={(e) => {setIdProduct(e.target.value.id_product)}}>
+                      <Form.Control as="select" value={idProduct} onChange={(e) => { setIdProduct(e.target.value)}}>
                         <option value="" defaultValue disabled hidden>Selecione...</option>
-                        {products.map( product => {
-                        return <option key={product.id_product} value={product.type_product +" - "+setIdProduct(product.id_product)}>{product.type_product} - {product.id_product}</option>
+                      { products.map( product => {
+                        return <option key={product.id_product} value={product.id_product}>{product.type_product} - {product.id_product}</option>
                       })}
                       </Form.Control>
                     </Form.Group>
