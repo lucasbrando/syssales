@@ -12,18 +12,21 @@ export default function Reports() {
 
 
 
+    
+    
+    useEffect(() => {
+    
     async function handlelastSales() {
         try {
             const response = await api.get('sales')
             setLastSales(response.data)  
         } catch {
-
-        }
-        
-    }
     
-    useEffect(() => {
-        handlelastSales()
+        }
+            
+    }
+
+    handlelastSales()
     },[])
     return (
         <div className={styles.container}>
