@@ -15,11 +15,11 @@ export default function Customers() {
         e.preventDefault()
         try {
           await api.post('products', {
-              id_product: idCostumer,
-              name_product: idProduct,
-              type_product: sale,
-              provider_product: dateSale,
-              brand_product: priceProduct
+              id_product: idProduct,
+              name_product: nameProduct,
+              type_product: typeProduct,
+              provider_product: providerProduct,
+              brand_product: brandProduct
           })
           alert("Cadastro efetuado com sucesso")
           router.reload()
