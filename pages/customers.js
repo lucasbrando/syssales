@@ -3,6 +3,7 @@ import Cabecalho  from '../components/cabecalho'
 import Rodape from '../components/rodape'
 import { Button, InputGroup, Form, Accordion, Card } from 'react-bootstrap'
 import { useState } from 'react'
+import api from '../services/api'
 
 export default function Customers() {
     const [idProduct, setIdProduct] = useState('')
@@ -14,6 +15,7 @@ export default function Customers() {
     async function handleCreateProduct(e) {
         e.preventDefault()
         try {
+          console.log(idProduct, nameProduct, typeProduct, providerProduct, brandProduct)  
           await api.post('products', {
               id_product: idProduct,
               name_product: nameProduct,
