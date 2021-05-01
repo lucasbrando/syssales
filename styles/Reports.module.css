@@ -6,3 +6,10 @@
     justify-content: center;
     align-items: center;
 }
+
+.input_block {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 10px;
+    width: 100%;
+  }
