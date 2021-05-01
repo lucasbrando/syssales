@@ -6,7 +6,7 @@ export default function Rodape() {
     return ( 
         <div className={styles.menu_footer}>
             <Link href="/clients">
-                <Button variant="dark">Clientes</Button>
+                <Button variant="dark">Cadastros</Button>
             </Link>
             <Link href="/">
                 <Button variant="dark">Vendas/Acerto</Button>
