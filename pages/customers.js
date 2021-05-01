@@ -3,7 +3,7 @@ import Cabecalho  from '../components/cabecalho'
 import Rodape from '../components/rodape'
 import { Button, InputGroup, Form, Accordion, Card } from 'react-bootstrap'
 import { useState } from 'react'
-import api from '../services/api'
+import { api }  from '../services/api'
 
 export default function Customers() {
     const [idProduct, setIdProduct] = useState('')
