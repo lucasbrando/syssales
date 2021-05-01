@@ -5,7 +5,6 @@ import { format, subDays } from 'date-fns'
 import styles from '../styles/Reports.module.css'
 import Cabecalho  from '../components/cabecalho'
 import Rodape from '../components/rodape'
-import Clients from './clients'
 
 
 export default function Reports() {
@@ -19,7 +18,7 @@ export default function Reports() {
     const [ customersreport, setCustomerReport ] = useState('')
 
     async function handleCustomersReport() {
-        
+
     }
     
     
