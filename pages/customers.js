@@ -90,6 +90,7 @@ export default function Customers() {
                                         </InputGroup>
                                     </Form.Group>
                                 </div>
+                                <Button type="submit" variant="primary" className={styles.save}>Salvar</Button>
                             </Card.Body>
                         </Accordion.Collapse>
                     </Card>
