@@ -5,7 +5,7 @@ import { Button } from 'react-bootstrap'
 export default function Rodape() {
     return ( 
         <div className={styles.menu_footer}>
-            <Link href="/clients">
+            <Link href="/customers">
                 <Button variant="dark">Cadastros</Button>
             </Link>
             <Link href="/">
