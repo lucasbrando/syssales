@@ -14,8 +14,7 @@ export default function Customers() {
 
     async function handleCreateProduct(e) {
         e.preventDefault()
-        try {
-          console.log(idProduct, nameProduct, typeProduct, providerProduct, brandProduct)  
+        try { 
           await api.post('products', {
               id_product: idProduct,
               name_product: nameProduct,
