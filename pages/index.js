@@ -9,7 +9,7 @@ import { useEffect, useState } from 'react'
 import moment from 'moment'
 
 export default function Home() {
-//const [ session, loading ] = useSession()
+  const [ session, loading ] = useSession()
   const router = useRouter()
   const [ idCostumer, setIdCostumer ] = useState('')
   const [ idProduct, setIdProduct ] = useState('')
@@ -80,6 +80,14 @@ export default function Home() {
   }
   
   return (
+        <>
+
+          { !session && <>
+            <button onClick={() => signIn()}>Sign in</button>
+          </>}
+          
+          {
+            session && <>
 
           <div className={styles.container}>
             <Cabecalho />
@@ -161,5 +169,6 @@ export default function Home() {
             </Form>  
             <Rodape />
           </div>
-  )    
+        </>}
+  </>)    
 }
