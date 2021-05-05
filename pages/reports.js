@@ -9,10 +9,10 @@ import moment from 'moment'
 
 export default function Reports() {
     const [ lastSales, setLastSales ] = useState([])
-    const today = new Date()
-    const lastday = subDays(new Date(), 7)
-    const [ dateToday, setDateToday ] = useState(format(today, 'dd/MM/yyyy'))
-    const [ lastDays, setLastDays ] = useState(format(lastday, 'dd/MM/yyyy'))
+    const today = moment()
+    const lastday = moment().subtract(7, 'd')
+    const [ dateToday, setDateToday ] = useState(today.format('YYYY-MM-DD'))
+    const [ lastDays, setLastDays ] = useState(lastday.format('YYYY-MM-DD'))
     const [ customers, setCustomers ] = useState([])
     const [ idCostumer, setIdCostumer ] = useState('')
     const [ customersreport, setCustomerReport ] = useState('')
@@ -60,7 +60,7 @@ export default function Reports() {
                             <Form.Group>
                                 <InputGroup>
                                 <Form.Label column sm="12">Data Inicial:</Form.Label>
-                                <Form.Control type="text" value={lastDays} onChange={(e) => {setLastDays(e.target.value)}}/>
+                                <Form.Control type="date" value={lastDays} onChange={(e) => {setLastDays(e.target.value)}}/>
                                 </InputGroup>
                             </Form.Group>
                         </div>
@@ -68,7 +68,7 @@ export default function Reports() {
                             <Form.Group>
                                 <InputGroup>
                                 <Form.Label column sm="12">Data Final:</Form.Label>
-                                <Form.Control type="text" value={dateToday} onChange={(e) => {setDateToday(e.target.value)}}/>
+                                <Form.Control type="date" value={dateToday} onChange={(e) => {setDateToday(e.target.value)}}/>
                                 </InputGroup>
                             </Form.Group>
                         </div>
