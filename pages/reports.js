@@ -60,7 +60,7 @@ export default function Reports() {
                             <Form.Group>
                                 <InputGroup>
                                 <Form.Label column sm="12">Data Inicial:</Form.Label>
-                                <Form.Control type="date" value={lastDays} onChange={(e) => {setLastDays(e.target.value)}}/>
+                                <Form.Control type="date" min={dateToday} value={lastDays} onChange={(e) => {setLastDays(e.target.value)}}/>
                                 </InputGroup>
                             </Form.Group>
                         </div>
@@ -68,7 +68,7 @@ export default function Reports() {
                             <Form.Group>
                                 <InputGroup>
                                 <Form.Label column sm="12">Data Final:</Form.Label>
-                                <Form.Control type="date" value={dateToday} onChange={(e) => {setDateToday(e.target.value)}}/>
+                                <Form.Control type="date" max={dateToday} value={dateToday} onChange={(e) => {setDateToday(e.target.value)}}/>
                                 </InputGroup>
                             </Form.Group>
                         </div>

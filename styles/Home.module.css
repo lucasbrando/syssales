@@ -1,11 +1,13 @@
 .container {
+  max-width: 768px;
   min-height: 100vh;
+  margin: 0 auto;
   padding: 0 0.5rem;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  overflow-y: scroll;
+  overflow-y: auto;
 }
 
 .form_fields {
