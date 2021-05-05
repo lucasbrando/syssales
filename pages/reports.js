@@ -1,7 +1,6 @@
 import { useEffect, useState } from 'react'
 import { api } from '../services/api'
 import { Button, InputGroup, Form, Table, Accordion, Card } from 'react-bootstrap'
-import { format, subDays } from 'date-fns'
 import styles from '../styles/Reports.module.css'
 import Cabecalho  from '../components/cabecalho'
 import Rodape from '../components/rodape'
