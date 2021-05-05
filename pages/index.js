@@ -1,12 +1,12 @@
 import { signIn, signOut, useSession } from 'next-auth/client'
 import { useRouter } from 'next/router';
 import styles from '../styles/Home.module.css'
-import { Button, InputGroup, Form } from 'react-bootstrap'
+import { Button, InputGroup, Form, Table } from 'react-bootstrap'
 import Cabecalho  from '../components/cabecalho'
 import Rodape from '../components/rodape'
 import { api } from '../services/api'
-import { format } from 'date-fns'
 import { useEffect, useState } from 'react'
+import moment from 'moment'
 
 export default function Home() {
 //const [ session, loading ] = useSession()
@@ -17,10 +17,12 @@ export default function Home() {
   const [ clients, setClients ] = useState([])
   const [ products, setProducts] = useState([])
   const [ sale, setSale ] = useState(true)
-  const [ dateSale, setDateSale] = useState(format(new Date(), 'dd/MM/yyyy'))
-  const createdAt = format(new Date(), 'dd/MM/yyyy - HH:mm:ss')
+  const [ dateSale, setDateSale] = useState(moment().utc().format("YYYY-MM-DD"))
+  const [ createdAt, setCreatedAt ] = useState(moment().utc().format())
+  const [ lastSales, setLastSales ] = useState([])
 
   useEffect(() => {
+
     async function handleClients() {
       const response = await api.get('customers')
       setClients(response.data)  
@@ -31,6 +33,23 @@ export default function Home() {
       setProducts(response.data)
     }
 
+    async function handlelastSales() {
+      try {
+          const response = await api.get('lastsales', {
+            params: {
+              maxrows: 3
+            }
+          })
+          setLastSales(response.data)
+          console.log(lastSales) 
+      } catch {
+  
+      }
+          
+    }
+    console.log('dateSale ' + dateSale)
+    console.log('createdAt ' + createdAt)
+    handlelastSales()
     handleClients();
     handleProducts();
   },[])
@@ -51,6 +70,13 @@ export default function Home() {
     } catch {
       alert("Erro, tente novamente mais tarde")
     }  
+  }
+
+  function handleDate(dateconvert) {
+    const dateresult = moment(dateconvert).format("YYYY-MM-DD")
+    console.log(dateresult)
+    setDateSale(dateresult)
+
   }
   
   return (
@@ -87,7 +113,7 @@ export default function Home() {
                   <Form.Group>
                     <InputGroup>
                       <Form.Label column sm="12">Data:</Form.Label>
-                      <Form.Control type="text" value={dateSale} onChange={(e) => {setDateSale(e.target.value)}}/>
+                      <Form.Control type="date" value={dateSale} onChange={(e) => {handleDate(e.target.value)}}/>
                     </InputGroup>
                   </Form.Group>
                 </div>
@@ -103,8 +129,34 @@ export default function Home() {
                     </InputGroup>
                   </Form.Group>
                 </div>
-               
+            
                 <Button type="submit" variant="primary" className={styles.save}>Salvar</Button>
+                <br /><br />
+
+                <h4>Últimas 3 vendas</h4>
+
+                <Table striped bordered hover size="sm">
+                            <thead>
+                                <tr>
+                                    <th>Cliente:</th>
+                                    <th>Produto:</th>
+                                    <th>Valor:</th>
+                                    <th>Venda:</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {lastSales.map( lastsale => {
+                                    return (
+                                    <tr key={lastsale.id_sale}>
+                                        <td>{lastsale.name_customer}</td>
+                                        <td>{lastsale.name_product}</td>
+                                        <td>R$ {lastsale.price_product}</td>
+                                        <td>{moment(lastsale.date_sale).add(1, 'd').format("DD/MM/YYYY")}</td>
+                                    </tr>
+                                )})
+                                }
+                            </tbody>
+                        </Table>
               </div>
             </Form>  
             <Rodape />

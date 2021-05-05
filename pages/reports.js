@@ -5,6 +5,7 @@ import { format, subDays } from 'date-fns'
 import styles from '../styles/Reports.module.css'
 import Cabecalho  from '../components/cabecalho'
 import Rodape from '../components/rodape'
+import moment from 'moment'
 
 
 export default function Reports() {
@@ -40,8 +41,6 @@ export default function Reports() {
     }
     handleCustomers()
     handlelastSales()
-    console.log()
-    console.log()
     },[])
     return (
         <div className={styles.container}>
@@ -75,7 +74,7 @@ export default function Reports() {
                             </Form.Group>
                         </div>
 
-                        <Table striped bordered hover>
+                        <Table striped bordered hover size="sm">
                             <thead>
                                 <tr>
                                     <th>Cliente:</th>
@@ -91,7 +90,7 @@ export default function Reports() {
                                         <td>{lastsale.name_customer}</td>
                                         <td>{lastsale.name_product}</td>
                                         <td>R$ {lastsale.price_product}</td>
-                                        <td>{lastsale.created_at}</td>
+                                        <td>{moment(lastsale.date_sale).add(1, 'd').format("DD/MM/YYYY")}</td>
                                     </tr>
                                 )})
                                 }
