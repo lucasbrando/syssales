@@ -83,8 +83,6 @@ export default function Home() {
         <>
 
           { !session && <>
-            {console.log("Google ID " + process.env.NEXT_PUBLIC_GOOGLE_CLIENT_ID)}
-            {console.log("Google Secret " + process.env.NEXT_PUBLIC_GOOGLE_CLIENT_SECRET)}
             <button onClick={() => signIn('google')}>Sign in</button>
           </>}
           
