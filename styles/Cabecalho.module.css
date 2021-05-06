@@ -8,7 +8,8 @@
     border: 1px solid #aeaeae;
     display: flex;
     align-items:center;
-    justify-content: center;
+    justify-content: space-between;
     font-weight: bold;
+    padding: 0 0.5rem;
   }
   
