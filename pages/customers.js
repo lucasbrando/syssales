@@ -1,4 +1,5 @@
 import styles from '../styles/Customers.module.css'
+import { useSession } from 'next-auth/client'
 import Cabecalho  from '../components/cabecalho'
 import Rodape from '../components/rodape'
 import { Button, InputGroup, Form, Accordion, Card } from 'react-bootstrap'
@@ -6,6 +7,7 @@ import { useState } from 'react'
 import { api }  from '../services/api'
 
 export default function Customers() {
+    const [ session, loading ] = useSession()
     const [idProduct, setIdProduct] = useState('')
     const [nameProduct, setNameProduct] = useState('')
     const [typeProduct, setTypeProduct] = useState('')

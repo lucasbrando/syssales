@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react'
+import { useSession } from 'next-auth/client'
 import { api } from '../services/api'
 import { Button, InputGroup, Form, Table, Accordion, Card } from 'react-bootstrap'
 import styles from '../styles/Reports.module.css'
@@ -8,6 +9,7 @@ import moment from 'moment'
 
 
 export default function Reports() {
+    const [ session, loading ] = useSession()
     const [ lastSales, setLastSales ] = useState([])
     const today = moment()
     const lastday = moment().subtract(7, 'd')

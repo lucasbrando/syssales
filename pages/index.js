@@ -1,4 +1,4 @@
-import { signIn, signOut, useSession } from 'next-auth/client'
+import { signIn, useSession } from 'next-auth/client'
 import { useRouter } from 'next/router';
 import styles from '../styles/Home.module.css'
 import { Button, InputGroup, Form, Table } from 'react-bootstrap'
