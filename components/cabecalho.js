@@ -1,7 +1,7 @@
 import styles from '../styles/Cabecalho.module.css'
-import { signIn, signOut, useSession } from 'next-auth/client'
+import { signOut, useSession } from 'next-auth/client'
 
-export default function Cabecalho() {
+export default function Cabecalho({user}) {
   const [ session, loading ] = useSession()
 
     return ( 
@@ -12,11 +12,17 @@ export default function Cabecalho() {
             <div className={styles.title}>
               Sistemas de Gerenciamento de Vendas
             </div>
-            <div className={styles.avatar}>
-              { session ? (
-                <img src="/static/avatar-naiara.png" width={32} height={32} />
+            <div className={styles.avatar} onClick={() => signOut()}>
+              { (session && session.user.email == process.env.ADMIN_1) ? (
+                <>
+                  <img src="/static/avatar-naiara.png" width={32} height={32} />
+                  <span className={styles.username}>{session.user.name}</span>
+                </> 
                ) : (
-                <img src="/static/avatar-nobody.png" width={32} height={32} /> 
+                <> 
+                  <img src="/static/avatar-nobody.png" width={32} height={32} />
+                  <span className={styles.username}>{session.user.name}</span>
+                </> 
                )
                } 
               

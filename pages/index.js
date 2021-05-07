@@ -80,14 +80,11 @@ export default function Home() {
   }
   
   return (
-        <>
-
-          { !session && <>
-            <button onClick={() => signIn('google')}>Sign in</button>
-          </>}
-          
+ <>
+                 
           {
-            session && <>
+            (session && (session.user.email == process.env.ADMIN_1 || session.user.email == process.env.ADMIN_2 )) ? ( 
+        <>
 
           <div className={styles.container}>
             <Cabecalho />
@@ -169,6 +166,8 @@ export default function Home() {
             </Form>  
             <Rodape />
           </div>
-        </>}
+        </>) : (
+            <button onClick={() => signIn('google')}>Sign in</button>
+        )}
   </>)    
 }
