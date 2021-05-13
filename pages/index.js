@@ -78,16 +78,30 @@ export default function Home() {
     setDateSale(dateresult)
 
   }
+
+  function checkGranted() {
+    let loggeduser = ""
+    if (session) {
+      loggeduser = session.user.email  
+      if (loggeduser == process.env.ADMIN_1 || loggeduser == process.env.ADMIN_2 ) {
+        return true 
+      }} else { 
+      return false
+    }
+   console.log("LogedUser " +loggeduser)
+   console.log("ADMIN_1 " + process.env.ADMIN_1)
+   console.log("ADMIN_2 " + process.env.ADMIN_2)     
+  }
   
   return (
  <>
                  
-          {
-            (session && (session.user.email == process.env.ADMIN_1 || session.user.email == process.env.ADMIN_2 )) ? ( 
-        <>
-
+        {  
+          checkGranted() ? (   
+   
           <div className={styles.container}>
             <Cabecalho />
+            <p>{session.user.email}</p>
             <Form className="w-100" onSubmit={handleCreateOrder}>
               <div className={styles.form_fields}>
                 <div className={styles.input_block}>
@@ -166,8 +180,8 @@ export default function Home() {
             </Form>  
             <Rodape />
           </div>
-        </>) : (
+          ) : (
             <button onClick={() => signIn('google')}>Sign in</button>
         )}
-  </>)    
+</>)    
 }
