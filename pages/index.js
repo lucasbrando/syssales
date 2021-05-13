@@ -80,7 +80,7 @@ export default function Home() {
   }
 
   function checkGranted() {
-    let loggeduser = ""
+    var loggeduser = ""
     if (session) {
       loggeduser = session.user.email  
       if (loggeduser == process.env.ADMIN_1 || loggeduser == process.env.ADMIN_2 ) {
@@ -88,16 +88,14 @@ export default function Home() {
       }} else { 
       return false
     }
-   console.log("LogedUser " +loggeduser)
-   console.log("ADMIN_1 " + process.env.ADMIN_1)
-   console.log("ADMIN_2 " + process.env.ADMIN_2)     
+    console.log(loggeduser)    
   }
   
   return (
  <>
                  
         {  
-          checkGranted() ? (   
+          checkGranted() && (   
    
           <div className={styles.container}>
             <Cabecalho />
@@ -180,7 +178,8 @@ export default function Home() {
             </Form>  
             <Rodape />
           </div>
-          ) : (
+          )}
+          { !checkGranted() && (
             <button onClick={() => signIn('google')}>Sign in</button>
         )}
 </>)    

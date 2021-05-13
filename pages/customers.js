@@ -29,9 +29,24 @@ export default function Customers() {
         } catch {
           alert("Erro, tente novamente mais tarde")
         }  
-      }
+    }
+
+    function checkGranted() {
+        let loggeduser = ""
+        if (session) {
+          loggeduser = session.user.email  
+          if (loggeduser == 'lbrandof@gmail.com' || loggeduser == process.env.ADMIN_2 ) {
+            return true 
+          }} else { 
+          return false
+        }
+        console.log(loggeduser)    
+    }
 
     return (
+
+        checkGranted() ? (
+
         <div className={styles.container}>
             <Cabecalho />
             <h2>Cadastros</h2><br />
@@ -112,6 +127,8 @@ export default function Customers() {
                 </Card>
             </Accordion>
             <Rodape />
-        </div>    
+        </div>) : (
+                <button onClick={() => signIn('google')}>Sign in</button>
+            )    
     )
 }

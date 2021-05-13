@@ -43,7 +43,21 @@ export default function Reports() {
     handleCustomers()
     handlelastSales()
     },[])
+
+    function checkGranted() {
+        let loggeduser = ""
+        if (session) {
+          loggeduser = session.user.email  
+          if (loggeduser == process.env.ADMIN_1 || loggeduser == process.env.ADMIN_2 ) {
+            return true 
+          }} else { 
+          return false
+        }    
+    }
+
     return (
+
+        checkGranted() ? (
         <div className={styles.container}>
             <Cabecalho />
             <h2>Relatórios</h2>
@@ -170,6 +184,8 @@ export default function Reports() {
             </Accordion>            
             
             <Rodape />
-        </div>    
+        </div>) : (
+            <button onClick={() => signIn('google')}>Sign in</button>
+        )    
     )
 }
